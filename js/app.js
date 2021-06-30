@@ -45,7 +45,7 @@ function mostrarError(mensaje){
 function consultarAPI(ciudad,pais){
     const appId = '4dd4fa9973c3b37b2d5f24b241e700f2';
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${appId}`;
-
+    Spinner();//Muestra el spinner de carga
     fetch(url)
         .then(respuesta=>respuesta.json())
         .then(datos => {
@@ -101,4 +101,25 @@ function limpiarHTML(){
     while(resultado.firstChild){
         resultado.removeChild(resultado.firstChild);
     }
+}
+
+function Spinner(){
+    limpiarHTML();
+    const divSpinner = document.createElement('div');
+    divSpinner.classList.add('sk-fading-circle');
+    divSpinner.innerHTML=`
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+    `;
+    resultado.appendChild(divSpinner);
 }
